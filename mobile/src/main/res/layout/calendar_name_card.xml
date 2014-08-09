@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        android:descendantFocusability="afterDescendants">
+
+        <TextView
+            android:id="@+id/calendar_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal"/>
+        <TextView
+            android:id="@+id/calendar_account_name"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:text="tetaliuss\@gmail.com"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:descendantFocusability="afterDescendants"
+        android:id="@+id/linearLayout2">
+        <View
+            android:paddingTop="15dp"
+            android:layout_width="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageButton"
+        android:background="@android:color/white"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_toRightOf="@+id/linearLayout2"
+        android:src="@drawable/ic_action_next_item"
+        android:contentDescription="Select the calendar" />
+
+</RelativeLayout>
