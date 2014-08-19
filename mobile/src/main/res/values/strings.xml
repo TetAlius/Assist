@@ -6,4 +6,14 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_calendar">CalendarActivity</string>
 
+    <!-- Calendar Activity and Fragment-->
+    <string name="meetings_title">Meetings</string>
+    <string name="meetings_subtitle">Never be bothered again during a meeting</string>
+    <string name="choose_calendars">Choose calendars</string>
+
+    <!-- Calendar row for list view -->
+    <string name="calendar_name_example">Personal</string>
+    <string name="account_name_example">example@gmail.com</string>
+    <string name="select_calendar_description">Select the calendar</string>
+
 </resources>
