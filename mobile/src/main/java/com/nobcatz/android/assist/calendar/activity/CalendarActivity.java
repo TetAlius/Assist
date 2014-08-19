@@ -10,8 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ListView;
 
 import com.nobcatz.android.assist.R;
+import com.nobcatz.android.assist.calendar.adapter.CalendarAdapter;
+import com.nobcatz.android.assist.calendar.model.Calendar;
+import com.nobcatz.android.assist.calendar.util.CalendarsUtility;
+
+import java.util.List;
 
 public class CalendarActivity extends Activity {
 
@@ -50,6 +56,8 @@ public class CalendarActivity extends Activity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+        ListView list;
+        CalendarAdapter adapter;
 
         public PlaceholderFragment() {
         }
@@ -58,7 +66,21 @@ public class CalendarActivity extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
+            addCalendars(rootView, inflater);
             return rootView;
+        }
+
+        private void addCalendars(View rootView, LayoutInflater inflater) {
+            List<Calendar> calendars = CalendarsUtility.getAllCalendars(getActivity().getApplicationContext());
+            list=(ListView)rootView.findViewById(R.id.calendar_list);
+            list.setDividerHeight(0);
+
+            adapter=new CalendarAdapter(inflater, calendars);
+            list.setAdapter(adapter);
+
+            // Click event for single list row
+           // list.setOnItemClickListener(this);
+           // list.setOnTouchListener(mTouchListener);
         }
     }
 }
