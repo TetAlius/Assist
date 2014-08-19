@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CalendarContract.Events;
-import android.text.format.Time;
 import android.util.Log;
 
 /**
@@ -24,6 +23,7 @@ public class EventsUtility {
     private static final int PROJECTION_RRULE = 7;
     private static final int PROJECTION_RDATE = 8;
     private static final int PROJECTION_CALENDAR_ID = 9;
+    private static final int PROJECTION_EVENT_ID = 10;
 
     private static final String FUTURE_EVENTS_ONLY =
             "((" + Events.DTEND + ">=" + System.currentTimeMillis() + ")OR(" +
@@ -39,10 +39,11 @@ public class EventsUtility {
             Events.ALL_DAY,
             Events.RRULE,
             Events.RDATE,
-            Events.CALENDAR_ID
+            Events.CALENDAR_ID,
+            Events._ID
     };
 
-    public static void readAllEventsFromCalendar(Context context) {
+    public static void readAllEvents(Context context) {
 
         Cursor eventCursor = null;
         ContentResolver cr = context.getContentResolver();
@@ -61,6 +62,7 @@ public class EventsUtility {
             String rrule = null;
             String rdate = null;
             long calID = 0;
+            long eventID = 0;
 
             do {
                 title = eventCursor.getString(PROJECTION_TITLE);
@@ -73,9 +75,10 @@ public class EventsUtility {
                 rrule = eventCursor.getString(PROJECTION_RRULE);
                 rdate = eventCursor.getString(PROJECTION_RDATE);
                 calID = eventCursor.getLong(PROJECTION_CALENDAR_ID);
+                eventID = eventCursor.getLong(PROJECTION_EVENT_ID);
 
                 if (title != null)
-                    Log.e("calendars", calID + " " + title + " " + dtstart + " " + dtend + " " + eventTimezone + " " + eventEndTimezone + " " + duration + " " + allDay + " " + rrule + " " + rdate);
+                    Log.e("calendars", calID + " " + eventID + " " + title + " " + dtstart + " " + dtend + " " + eventTimezone + " " + eventEndTimezone + " " + duration + " " + allDay + " " + rrule + " " + rdate);
             } while (eventCursor.moveToNext());
         }
     }
